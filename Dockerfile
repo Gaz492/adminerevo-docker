@@ -11,7 +11,8 @@ RUN apk add --no-cache \
     php-8.3-pdo_pgsql \
     php-8.3-mysqlnd \
     php-8.3-pdo_dblib \
-    php-8.3-opcache
+    php-8.3-opcache \
+    php-8.3-pecl-mongodb
 
 COPY rootfs /
 

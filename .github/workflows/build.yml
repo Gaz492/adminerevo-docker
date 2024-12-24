@@ -29,9 +29,6 @@ jobs:
       - name: Login into Github Docker Registery
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Login into Docker Hub
-        run: echo "${{ secrets.DOCKER_HUB_PAT }}" | docker login -u shyim --password-stdin
-
       - name: Get latest Adminerevo version
         id: ADMINEREVO_VERSION
         run: |
@@ -43,10 +40,10 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/shyim/adminerevo:latest
-            ghcr.io/shyim/adminerevo:${{ steps.ADMINEREVO_VERSION.outputs.VERSION }}
-            shyim/adminerevo:latest
-            shyim/adminerevo:${{ steps.ADMINEREVO_VERSION.outputs.VERSION }}
+            ghcr.io/gaz492/adminerevo:latest
+            ghcr.io/gaz492/adminerevo:${{ steps.ADMINEREVO_VERSION.outputs.VERSION }}
+            gaz492/adminerevo:latest
+            gaz492/adminerevo:${{ steps.ADMINEREVO_VERSION.outputs.VERSION }}
           platforms: linux/amd64,linux/arm64
           build-args: |
             ADMINEREVO_VERSION=${{ steps.ADMINEREVO_VERSION.outputs.VERSION }}
